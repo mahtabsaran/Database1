@@ -1,4 +1,4 @@
-# app/config.py - اصلاح شده
+# app/config.py
 from fastapi import FastAPI
 from .db import create_db_and_tables  # تغییر این خط
 
@@ -13,8 +13,9 @@ from .routers import (
 )
 
 app = FastAPI(
-    title="HavirKesht Demo II",
-    description="Second demo of havirkesht project.",
+    title="HavirKesht Database",
+    description=" *** Mahtab saran *** ",
+
     version="0.0.1",
 )
 
@@ -23,12 +24,12 @@ def on_startup():
     create_db_and_tables()
 
 # Include all routers
+app.include_router(user_router)
+app.include_router(auth_router)
 app.include_router(provinces_router)
 app.include_router(city_router)
 app.include_router(village_router)
 app.include_router(factory_router)
-app.include_router(user_router)
-app.include_router(auth_router)
 app.include_router(measure_unit_router)
 app.include_router(pesticide_router)
 app.include_router(seed_router)
